@@ -1,0 +1,144 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 8px);
+  --radius-2xl: calc(var(--radius) + 16px);
+  --radius-3xl: calc(var(--radius) + 24px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sky: var(--sky);
+  --color-lemon: var(--lemon);
+  --color-cream: var(--cream);
+  --color-coral: var(--coral);
+  --color-mint: var(--mint);
+  --color-ink: var(--ink);
+  --font-display: "Fredoka", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1.25rem;
+  --background: oklch(0.985 0.025 95);
+  --foreground: oklch(0.22 0.04 260);
+  --ink: oklch(0.22 0.04 260);
+  --card: oklch(0.995 0.012 100);
+  --card-foreground: oklch(0.22 0.04 260);
+  --popover: oklch(0.995 0.012 100);
+  --popover-foreground: oklch(0.22 0.04 260);
+  --primary: oklch(0.78 0.15 230);
+  --primary-foreground: oklch(0.18 0.04 260);
+  --secondary: oklch(0.93 0.13 95);
+  --secondary-foreground: oklch(0.22 0.04 260);
+  --muted: oklch(0.96 0.025 95);
+  --muted-foreground: oklch(0.45 0.04 260);
+  --accent: oklch(0.86 0.12 25);
+  --accent-foreground: oklch(0.22 0.04 260);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.22 0.04 260);
+  --input: oklch(0.94 0.02 95);
+  --ring: oklch(0.78 0.15 230);
+
+  --sky: oklch(0.88 0.08 230);
+  --lemon: oklch(0.94 0.13 100);
+  --cream: oklch(0.97 0.04 90);
+  --coral: oklch(0.84 0.13 25);
+  --mint: oklch(0.9 0.1 165);
+}
+
+.dark {
+  --background: oklch(0.22 0.04 260);
+  --foreground: oklch(0.96 0.02 95);
+  --ink: oklch(0.96 0.02 95);
+  --card: oklch(0.3 0.04 260);
+  --card-foreground: oklch(0.96 0.02 95);
+  --popover: oklch(0.3 0.04 260);
+  --popover-foreground: oklch(0.96 0.02 95);
+  --primary: oklch(0.72 0.16 230);
+  --primary-foreground: oklch(0.15 0.04 260);
+  --muted: oklch(0.32 0.03 260);
+  --muted-foreground: oklch(0.78 0.03 95);
+  --border: oklch(0.96 0.02 95);
+  --input: oklch(0.3 0.04 260);
+
+  --sky: oklch(0.55 0.1 230);
+  --lemon: oklch(0.6 0.13 100);
+  --cream: oklch(0.4 0.04 90);
+  --coral: oklch(0.6 0.14 25);
+  --mint: oklch(0.55 0.1 165);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body {
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    background-image:
+      radial-gradient(circle at 20% 10%, color-mix(in oklab, var(--sky) 60%, transparent) 0, transparent 35%),
+      radial-gradient(circle at 80% 20%, color-mix(in oklab, var(--lemon) 70%, transparent) 0, transparent 40%),
+      radial-gradient(circle at 60% 90%, color-mix(in oklab, var(--coral) 40%, transparent) 0, transparent 35%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+}
+
+@layer utilities {
+  .shadow-cartoon { box-shadow: 6px 6px 0 0 var(--ink); }
+  .shadow-cartoon-sm { box-shadow: 4px 4px 0 0 var(--ink); }
+  .shadow-cartoon-lg { box-shadow: 10px 10px 0 0 var(--ink); }
+  .border-ink { border: 3px solid var(--ink); }
+  .border-ink-thick { border: 4px solid var(--ink); }
+  .doodle-bg {
+    background-image: radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--ink) 25%, transparent) 1px, transparent 0);
+    background-size: 18px 18px;
+  }
+}
+
+@keyframes wobble { 0%,100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
+@keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes tail-wag { 0%,100% { transform: rotate(-12deg); } 50% { transform: rotate(18deg); } }
+@keyframes sniff { 0%,100% { opacity: 0.3; transform: translateY(0) scale(0.9); } 50% { opacity: 1; transform: translateY(-4px) scale(1.05); } }
+@keyframes petal-fall {
+  0% { transform: translate(0,-20px) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.9; }
+  100% { transform: translate(40px, 110vh) rotate(360deg); opacity: 0; }
+}
+@keyframes cloud-drift {
+  0% { transform: translateX(-20vw); }
+  100% { transform: translateX(120vw); }
+}
+@keyframes slide-in-right { 0% { transform: translateX(100%); } 100% { transform: translateX(0); } }
+@keyframes scale-in { 0% { transform: scale(0.92); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes fade-in { 0% { opacity: 0; transform: translateY(4px); } 100% { opacity: 1; transform: translateY(0); } }
+
+.animate-wobble { animation: wobble 3.2s ease-in-out infinite; }
+.animate-float-y { animation: float-y 3.5s ease-in-out infinite; }
+.animate-tail { transform-origin: bottom center; animation: tail-wag 0.8s ease-in-out infinite; }
+.animate-sniff { animation: sniff 1.4s ease-in-out infinite; }
